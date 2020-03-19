@@ -20,7 +20,7 @@ public final class Interpreteur {
     /**
      * Fonction qui ajoute une commande a la liste.
      * @param name Nom de la commande
-     * @param com Classe de le commande
+     * @param com Classe de la commande
      */
     public void addCommand(final String name, final GeneriqueCommand com) {
         this.commands.put(name, com);
