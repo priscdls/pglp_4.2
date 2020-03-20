@@ -8,7 +8,7 @@ public class SaisieRPNTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		SaisieRPN s = new SaisieRPN();
 	}
 
 }

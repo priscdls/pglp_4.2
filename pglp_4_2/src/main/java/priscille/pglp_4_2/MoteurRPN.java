@@ -61,9 +61,11 @@ public final class MoteurRPN {
                 } catch (Exception e) {
                     pile.push(op1);
                     pile.push(op2);
+                    throw e;
                 }
             } else {
                 System.err.println("Nombre d'opérandes insuffisant");
+                throw new Exception();
             }
         } else {
             throw new Exception();
