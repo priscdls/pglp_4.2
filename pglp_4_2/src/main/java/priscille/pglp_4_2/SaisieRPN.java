@@ -33,7 +33,7 @@ public class SaisieRPN {
      * Execute le calcul sauf exception.
      * @throws Exception
      */
-    public void calcul() throws Exception {
+    public Stack<Double> calcul() throws Exception {
         s = new Scanner(System.in);
         double d;
         boolean continuer = true;
@@ -65,5 +65,6 @@ public class SaisieRPN {
         }
         s.close();
         System.out.println("Resultat : " + pile.toString());
+		return pile;
     }
 }
