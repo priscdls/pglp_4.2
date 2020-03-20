@@ -31,6 +31,7 @@ public class SaisieRPN {
     }
     /**
      * Execute le calcul sauf exception.
+     * @return La pile a la fin du calcul
      * @throws Exception
      */
     public Stack<Double> calcul() throws Exception {
@@ -65,6 +66,6 @@ public class SaisieRPN {
         }
         s.close();
         System.out.println("Resultat : " + pile.toString());
-		return pile;
+        return pile;
     }
 }
