@@ -24,4 +24,11 @@ public class InterpreteurTest {
 		assertEquals(pile, res);
 	}
 
+	@Test (expected = Exception.class)
+	public void testCommandeInvalide() throws Exception {
+		Stack<Double> pile = new Stack<Double>();
+		Undo undo = new Undo(pile);
+		Interpreteur i = Interpreteur.init(undo);
+		i.executeCommand("u");
+	}
 }

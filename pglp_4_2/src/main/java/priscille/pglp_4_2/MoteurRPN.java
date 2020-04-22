@@ -1,16 +1,10 @@
 package priscille.pglp_4_2;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Stack;
 /**
  * Classe MoteurRPN.
  */
-public final class MoteurRPN {
-    /**
-     * Liste d'opérations.
-     */
-    public Map<String, SpecificCommand> operation;
+public final class MoteurRPN extends Interpreteur {
     /**
      * Pile d'opérandes.
      */
@@ -25,7 +19,7 @@ public final class MoteurRPN {
      * @param u Le undo
      */
     private MoteurRPN(final Stack<Double> p, final Undo u) {
-        this.operation = new HashMap<String, SpecificCommand>();
+        super();
         this.pile = p;
         this.undo = u;
     }
@@ -35,7 +29,7 @@ public final class MoteurRPN {
      * @param command Classe de la commande
      */
     public void addCommand(final String name, final SpecificCommand command) {
-        this.operation.put(name, command);
+        this.commands.put(name, command);
     }
     /**
      * Ajoute une opérande a la pile.
@@ -51,12 +45,13 @@ public final class MoteurRPN {
      * @throws Exception
      */
     public void executeCommand(final String name) throws Exception {
-        if (operation.containsKey(name)) {
+        if (commands.containsKey(name)) {
             if (pile.size() >= 2) {
                 double op2 = pile.pop();
                 double op1 = pile.pop();
                 try {
-                    pile.push(operation.get(name).apply(op1, op2));
+                    pile.push(((SpecificCommand)
+                            commands.get(name)).apply(op1, op2));
                     undo.ajoutUndo();
                 } catch (Exception e) {
                     pile.push(op1);
